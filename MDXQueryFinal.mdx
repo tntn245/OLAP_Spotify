@@ -1,0 +1,287 @@
+﻿-- 1. Thống kê các track có popularity >50
+SELECT
+    NON EMPTY 
+    [Measures].[Track Popularity] ON COLUMNS,
+    NON EMPTY
+    FILTER(
+        [Dim Track Name].[Track Id].[Track Id].MEMBERS,
+        [Measures].[Track Popularity] > 50
+    ) ON ROWS
+FROM [Spotify DW];
+
+--2. Thống kê TOP 10 nghệ sĩ có nhiều bài hát nhất
+SELECT
+	TOPCOUNT (
+		ORDER(
+			[Dim Artist].[Artist Name].[Artist Name].MEMBERS,
+			[Measures].[Fact Track Count],
+			DESC),
+		10) 
+		ON ROWS,
+	[Measures].[Fact Track Count] ON COLUMNS
+FROM [Spotify DW];
+
+-- 3. Truy vấn top 10 ngày có số lượng bài hát được phát hành 
+-- nhiều nhất trong năm 2022
+SELECT 
+	TOPCOUNT(
+		ORDER(
+			FILTER(
+				[Dim Date].[Release Date].[Release Date].MEMBERS,
+				[Dim Date].[Release Year].CURRENTMEMBER IS [Dim Date].[Release Year].&[2022]
+			),
+			[Measures].[Fact Track Count],
+			DESC
+		),
+		10) 
+	ON ROWS,
+	[Measures].[Fact Track Count] ON COLUMNS
+FROM [Spotify DW];
+
+-- 4. Thống kê từ năm 2020->2023, top 5 bài hát có danceability, energy, speechiness, acousticness, 
+-- instrumentalness, liveness, và valence lớn hơn 0.2
+-- và độ phổ biến bài hát lớn hơn 20.
+WITH 
+SET [FilteredTracks] AS
+FILTER(
+	[Dim Track Name].[Track Id].[Track Id],
+
+	[Measures].[Danceability] > 0.2 AND
+	[Measures].[Energy] > 0.2 AND
+	[Measures].[Speechiness] > 0.2 AND
+	[Measures].[Acousticness] > 0.2 AND
+	[Measures].[Instrumentalness] > 0.2 AND
+	[Measures].[Liveness] > 0.2 AND
+	[Measures].[Valence] > 0.2 AND
+	[Measures].[Track Popularity] > 20 AND
+	(
+		[Dim Date].[Release Year].&[2020] OR
+		[Dim Date].[Release Year].&[2021] OR
+		[Dim Date].[Release Year].&[2022] OR
+		[Dim Date].[Release Year].&[2023] 
+	)
+)
+
+SELECT
+    NON EMPTY 
+    { 
+      [Measures].[Track Popularity]
+    } ON COLUMNS,
+    
+    NON EMPTY
+    TOPCOUNT(
+		ORDER(
+			[FilteredTracks],
+	        [Measures].[Track Popularity],
+			DESC
+		),
+    5
+    ) * [Dim Track Name].[Track Name].[Track Name]  ON ROWS
+FROM [Spotify DW];
+
+
+
+
+-- 5. Thống kê 10 bài hát phổ biến nhất của Taylor Swift với độ phổ biến > 50 
+-- và valence>0.1 trong năm 2020 và 2021
+WITH 
+SET [FilteredTracks] AS
+    FILTER(
+		[Dim Track Name].[Track Id].[Track Id],
+        [Measures].[Valence] > 0.1 AND
+        [Measures].[Track Popularity] > 50 AND
+		[Dim Artist].[Artist Name].&[Taylor Swift] AND
+		(
+			[Dim Date].[Release Year].&[2020] OR
+			[Dim Date].[Release Year].&[2021] 
+		)    
+	)
+SELECT
+	NON EMPTY
+	[Measures].[Track Popularity] ON COLUMNS,
+    TOPCOUNT(
+		ORDER(
+			[FilteredTracks],
+			[Measures].[Track Popularity],
+			DESC
+		),
+		10
+    ) * [Dim Track Name].[Track Name].[Track Name]
+	ON ROWS
+FROM [Spotify DW];
+
+
+-- 6. TOP 3 album có tổng số lượng track nhiều nhất 
+-- của nghệ sĩ "AB" trong năm 2020
+SELECT 
+  TOPCOUNT(
+    ORDER(
+      FILTER(
+        [Dim Album].[Album Name].[Album Name].MEMBERS,
+        [Dim Artist].[Artist Name].&[AB] AND
+        [Dim Date].[Release Year].&[2020]
+      ),
+      [Measures].[Fact Track Count],  
+      DESC
+	  ),
+	3
+  ) ON ROWS,
+
+NON EMPTY {
+  [Measures].[Fact Track Count]
+} ON COLUMNS
+
+FROM [Spotify DW];
+
+	   
+-- 7. Thống kê track popularity trung bình của các album sắp xếp theo thứ tự giảm dần.
+WITH
+	MEMBER [Measures].[Average Track Popularity per Album] AS
+		[Measures].[Track Popularity]/ [Measures].[Fact Track Count]
+SELECT
+	[Measures].[Average Track Popularity per Album] ON COLUMNS,
+	ORDER(
+		[Dim Album].[Album Name].[Album Name],
+		[Measures].[Average Track Popularity per Album],
+		DESC
+	) ON ROWS
+FROM [Spotify DW];
+
+-- Drilldown theo năm
+-- 8. TOP 10 bài hát có độ phổ biến cao nhất
+-- của nghệ sĩ "Taylor Swift" và drill down theo năm
+SELECT 
+    NON EMPTY
+    [Measures].[Track Popularity] ON COLUMNS,
+    NON EMPTY
+    [Dim Date].[Release Year].[Release Year].MEMBERS*
+	TOPCOUNT(
+        ORDER(
+			FILTER(
+				[Dim Track Name].[Track Id].[Track Id].MEMBERS,
+				[Dim Artist].[Artist Name].[Taylor Swift]
+			),
+			[Measures].[Track Popularity],
+			DESC
+		),
+        10
+    ) on ROWS
+FROM [Spotify DW];
+
+-- Drilldown theo tháng
+-- 9. Truy vấn drill down chi tiết các tháng trong năm 2021 
+-- có xuất hiện bài hát với độ phổ biến trên 50 và thể loại album là "single" 
+SELECT
+	NON EMPTY 
+	[Measures].[Track Popularity] ON COLUMNS,
+	NON EMPTY
+    [Dim Date].[Release Month].[Release Month].MEMBERS *
+	ORDER(
+        FILTER(
+			[Dim Track Name].[Track Id].[Track Id],
+			([Measures].[Track Popularity] > 50 AND 
+            [Dim Album].[Album Type].&[single]) AND
+			[Dim Date].[Release Year].&[2021]
+		),
+        [Measures].[Track Popularity], 
+		DESC
+    ) ON ROWS
+FROM [Spotify DW];
+
+-- Drilldown theo ngày
+-- 10. Truy vấn top 10 ngày có số lượng bài hát được phát hành nhiều nhất trong năm 2021.
+SELECT
+	TOPCOUNT(
+		ORDER(
+			FILTER(
+				[Dim Date].[Release Date].[Release Date],
+				[Dim Date].[Release Year].&[2021]
+			),
+		[Measures].[Fact Track Count],
+		DESC),
+	10) ON ROWS,
+	NON EMPTY
+	[Measures].[Fact Track Count] ON COLUMNS
+FROM [Spotify DW];
+
+--Crossjoin
+-- 11. Thống kê tổng số lượt phát hành bài hát theo các tháng trong từng năm 
+SELECT 
+	[Measures].[Fact Track Count]ON columns,
+NONEMPTY(
+	CROSSJOIN(
+	[Dim Date].[Release Year].[Release Year],
+	[Dim Date].[Release Month].[Release Month])
+) ON rows
+FROM [Spotify DW];
+
+
+-- 12. Liệt kê độ phổ biến của track trong từng album
+SELECT 
+    [Measures].[Track Popularity] ON COLUMNS,
+    NON EMPTY 
+    {
+        [Dim Album].[Album Name].[Album Name].MEMBERS *
+        [Dim Track Name].[Track Name].[Track Name].MEMBERS
+    } ON ROWS
+FROM 
+    [Spotify DW];
+
+
+-- 13. Liệt kê tổng số lượng bài hát phát hành của từng album trong từng năm
+SELECT
+	[Measures].[Fact Track Count] ON COLUMNS,
+    NON EMPTY 
+    {
+        [Dim Date].[Release Year].[Release Year].MEMBERS *
+		[Dim Album].[Album Name].[Album Name].MEMBERS 
+    } ON ROWS
+FROM 
+    [Spotify DW];
+
+
+
+-- 14. Thống kê chỉ số năng lượng trung bình của các album
+-- thuộc về những nghệ sĩ có lượng follower > 1000 
+-- và độ phổ biến của nghệ sĩ = 50
+WITH
+	MEMBER [Measures].[Average Energy per Album] AS
+		[Measures].[Energy]/ [Measures].[Fact Track Count]
+SELECT
+	[Measures].[Average Energy per Album] ON COLUMNS,
+	ORDER(
+		FILTER(
+			[Dim Artist].[Artist Name].[Artist Name],
+			[Dim Artist].[Artist Popularity].&[50] AND
+			[Dim Artist].[Followers] > 1000
+		),
+		[Measures].[Average Energy per Album],
+		DESC
+	) ON ROWS
+FROM [Spotify DW];
+
+	
+-- 15. Thống kê tổng độ phổ biến trung bình của các bài hát trong từng album 
+-- của nghệ sĩ Taylor Swift qua từng năm
+-- sắp xếp theo thứ tự tăng dần.
+WITH
+	MEMBER [Measures].[Average Track Popularity per Album] AS
+		[Measures].[Track Popularity]/ [Measures].[Fact Track Count]
+
+	MEMBER [Measures].[Sum Average Track Popularity per Year] AS
+		SUM([Dim Album].[Album Id].[Album Id],
+			[Measures].[Average Track Popularity per Album])
+
+SELECT
+	[Measures].[Sum Average Track Popularity per Year] 
+	ON COLUMNS,
+	ORDER(
+		FILTER(
+			[Dim Date].[Release Year].[Release Year],
+			[Dim Artist].[Artist Name].&[Taylor Swift] 
+		),
+		[Measures].[Sum Average Track Popularity per Year],
+		ASC
+	) ON ROWS
+FROM [Spotify DW];
+
