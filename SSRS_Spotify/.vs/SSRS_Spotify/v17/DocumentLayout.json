@@ -1,0 +1,68 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\OLAP\\Spotify\\SSRS_Spotify\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A00FB2AF-6389-46CF-B654-55413137DF5F}|SSRS_Spotify.rptproj|D:\\OLAP\\Spotify\\SSRS_Spotify\\Report3.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}",
+      "RelativeMoniker": "D:0:0:{A00FB2AF-6389-46CF-B654-55413137DF5F}|SSRS_Spotify.rptproj|solutionrelative:Report3.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A00FB2AF-6389-46CF-B654-55413137DF5F}|SSRS_Spotify.rptproj|D:\\OLAP\\Spotify\\SSRS_Spotify\\Report2.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}",
+      "RelativeMoniker": "D:0:0:{A00FB2AF-6389-46CF-B654-55413137DF5F}|SSRS_Spotify.rptproj|solutionrelative:Report2.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A00FB2AF-6389-46CF-B654-55413137DF5F}|SSRS_Spotify.rptproj|D:\\OLAP\\Spotify\\SSRS_Spotify\\Report1.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}",
+      "RelativeMoniker": "D:0:0:{A00FB2AF-6389-46CF-B654-55413137DF5F}|SSRS_Spotify.rptproj|solutionrelative:Report1.rdl||{420F4200-DD61-4785-81F3-52669CBC208E}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Report3.rdl [Design]",
+              "DocumentMoniker": "D:\\OLAP\\Spotify\\SSRS_Spotify\\Report3.rdl",
+              "RelativeDocumentMoniker": "Report3.rdl",
+              "ToolTip": "D:\\OLAP\\Spotify\\SSRS_Spotify\\Report3.rdl [Design]",
+              "RelativeToolTip": "Report3.rdl [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-05-21T09:05:16.751Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Report2.rdl [Design]",
+              "DocumentMoniker": "D:\\OLAP\\Spotify\\SSRS_Spotify\\Report2.rdl",
+              "RelativeDocumentMoniker": "Report2.rdl",
+              "ToolTip": "D:\\OLAP\\Spotify\\SSRS_Spotify\\Report2.rdl [Design]",
+              "RelativeToolTip": "Report2.rdl [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-05-21T08:53:07.811Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Report1.rdl [Design]",
+              "DocumentMoniker": "D:\\OLAP\\Spotify\\SSRS_Spotify\\Report1.rdl",
+              "RelativeDocumentMoniker": "Report1.rdl",
+              "ToolTip": "D:\\OLAP\\Spotify\\SSRS_Spotify\\Report1.rdl [Design]",
+              "RelativeToolTip": "Report1.rdl [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-05-21T08:21:45.813Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

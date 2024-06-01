@@ -1,0 +1,29 @@
+<AnalysisServicesUserConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0">
+  <Configurations>
+    <Configuration>
+      <Name>Development</Name>
+      <Options>
+        <UserIDs>
+          <ConfigurationSetting>
+            <Id>Spotify DW</Id>
+            <Name>Spotify DW</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAg1tbBq8Yu0ebJx6Ctfc4tAAAAAAWAAAAUwBwAG8AdABpAGYAeQAgAEQAVwAAABBmAAAAAQAAIAAAAHJrlwsENaTcokS73vxNPeoYqphpn4weaV7YWq/NZhj6AAAAAA6AAAAAAgAAIAAAALRgduqVlE9YZaByrqaShLj65N7ErJ5Ob1ZB+vKA/7/vEAAAAH3lyASVIk4Xp2kN3GhWmNVAAAAAqVJCy69VpT76Dks6gi8IBiXs49kh732ClLj4q0oyClwjA2ds8w1cmCICQNyB1I5/WvCCTb+2QF8jnUf+9u1xhw==</Value>
+          </ConfigurationSetting>
+        </UserIDs>
+        <UserPasswords>
+          <ConfigurationSetting>
+            <Id>Spotify DW</Id>
+            <Name>Spotify DW</Name>
+            <Value xsi:type="xsd:string">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAg1tbBq8Yu0ebJx6Ctfc4tAAAAAAWAAAAUwBwAG8AdABpAGYAeQAgAEQAVwAAABBmAAAAAQAAIAAAAGVS6rS2blThWvSjZ4mdip9xNm8/tfivZytAOeeNQknGAAAAAA6AAAAAAgAAIAAAACVnoHPyHUODaCNz0dHwlffzw8Bc6TDo1gqhZ6RNUxMMEAAAAK9tk7ck7kER/+zCm8l/XDhAAAAAj5wFaahg0VeyASBuK7sYvDTF/c2kabvBScDF7KWzoC2BKcxcVz2LvN2k2MgahT+6lhUIm2FxSQfxeE6uAgJeAw==</Value>
+          </ConfigurationSetting>
+        </UserPasswords>
+        <TargetServer>LAPTOP-JSLDTK1L\TNTN</TargetServer>
+        <TargetDatabase>SSAS_Spotify</TargetDatabase>
+        <StartObject>
+          <ObjectId></ObjectId>
+          <ObjectType>Current</ObjectType>
+        </StartObject>
+      </Options>
+    </Configuration>
+  </Configurations>
+</AnalysisServicesUserConfiguration>

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34701.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "SSIS_Spotify", "SSIS_Spotify.dtproj", "{EDCAC04D-E04B-4EE9-8284-F28FC0F028E2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Azure|Default = Azure|Default
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EDCAC04D-E04B-4EE9-8284-F28FC0F028E2}.Azure|Default.ActiveCfg = Azure
+		{EDCAC04D-E04B-4EE9-8284-F28FC0F028E2}.Azure|Default.Build.0 = Azure
+		{EDCAC04D-E04B-4EE9-8284-F28FC0F028E2}.Development|Default.ActiveCfg = Development
+		{EDCAC04D-E04B-4EE9-8284-F28FC0F028E2}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8F2CC1CE-BA36-40BE-86A9-2B59EA98EBC1}
+	EndGlobalSection
+EndGlobal

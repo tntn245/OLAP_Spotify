@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34701.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "SSRS_Spotify", "SSRS_Spotify.rptproj", "{A00FB2AF-6389-46CF-B654-55413137DF5F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A00FB2AF-6389-46CF-B654-55413137DF5F}.Debug|Default.ActiveCfg = Debug
+		{A00FB2AF-6389-46CF-B654-55413137DF5F}.Debug|Default.Build.0 = Debug
+		{A00FB2AF-6389-46CF-B654-55413137DF5F}.Debug|Default.Deploy.0 = Debug
+		{A00FB2AF-6389-46CF-B654-55413137DF5F}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{A00FB2AF-6389-46CF-B654-55413137DF5F}.DebugLocal|Default.Build.0 = DebugLocal
+		{A00FB2AF-6389-46CF-B654-55413137DF5F}.Release|Default.ActiveCfg = Release
+		{A00FB2AF-6389-46CF-B654-55413137DF5F}.Release|Default.Build.0 = Release
+		{A00FB2AF-6389-46CF-B654-55413137DF5F}.Release|Default.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95F0EEE6-0938-4717-9194-A631563DFCF4}
+	EndGlobalSection
+EndGlobal
